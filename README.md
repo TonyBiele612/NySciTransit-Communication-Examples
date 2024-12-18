@@ -5,7 +5,7 @@ There are two different methods being explored here:
 1) Socket communication-- Python scripts: TransitArrayMaker, TransitSocketClient.
                           Unity Script: SocketServer
    
-2) Shared Memory--        Python scripts: TransitArrayMakerSharedMemory, SharedMemoryWriter.
+3) Shared Memory--        Python scripts: TransitArrayMakerSharedMemory, SharedMemoryWriter.
                           Unity Scripts: SharedMemoryReader, TransitSimpleVisualizer   
                           * This is the preferred method
    
