@@ -1,6 +1,5 @@
 import pygame as pg
 import random
-#import TransitSocketClient as tsc
 import SharedMemoryWriter as smw
 
 SCREEN_WIDTH = 500
@@ -15,13 +14,12 @@ screen = pg.display.set_mode(size)
 done = False;
 all_point_list = []
 
-#tsc.CreateSocket()
 smw.InitializeSharedMemory()
 
 def AddPoint():   
     newPoints = [pg.mouse.get_pos()[0] / SCREEN_WIDTH,
                  pg.mouse.get_pos()[1] / SCREEN_HEIGHT,
-                 random.randint(0,10)]
+                 random.randint(0,10)]   # randomize station type
              
     all_point_list.append(newPoints)
     print(all_point_list)
@@ -45,11 +43,9 @@ while not done:
             if event.button == 1:
                 AddPoint()
                 smw.WriteToSharedMemory(all_point_list)
-                #tsc.SendData(all_point_list)
             elif event.button == 3:
                 RemoveRandomPoint()
                 smw.WriteToSharedMemory(all_point_list)
-                #tsc.SendData(all_point_list)
 
     screen.fill(BLACK)
     for point in all_point_list:

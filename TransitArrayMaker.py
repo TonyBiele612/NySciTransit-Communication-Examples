@@ -15,7 +15,6 @@ screen = pg.display.set_mode(size)
 done = False;
 all_point_list = []
 
-#tss.CreateServerSocket()
 tsc.CreateSocket()
 
 def AddPoint():   

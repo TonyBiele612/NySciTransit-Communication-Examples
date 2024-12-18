@@ -45,7 +45,7 @@ def WriteToSharedMemory(data):
         kernel32.WaitForSingleObject(mutex, 0xFFFFFFFF) #infinite wait 
         buffer = shm.buf
 
-        # Write timestamp
+        # Write timestamp. Prevents Unity from continually reading identical information
         timestamp = time.time()
         buffer[:struct.calcsize('d')] = struct.pack('d', timestamp)
 
@@ -65,7 +65,7 @@ def WriteToSharedMemory(data):
         print(f"Unexpected error during write: {e}")
         raise
     finally:
-        kernel32.ReleaseMutex(mutex)
+        kernel32.ReleaseMutex(mutex)    # allow Unity to read memory
 
 def CleanupSharedMemory():
     global shm, mutex

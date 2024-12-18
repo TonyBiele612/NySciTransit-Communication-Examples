@@ -27,8 +27,7 @@ public class SharedMemoryReader : MonoBehaviour
     public DataStruct[] transitData;    
     private MemoryMappedFile mmf;
     private MemoryMappedViewAccessor accessor;
-    private Mutex mutex;
-
+    private Mutex mutex;  // Mutex locks the process so the memory can't be read while it is being written by Python camera app
     private double lastTimestamp = 0;
 
     void Start()
@@ -36,7 +35,7 @@ public class SharedMemoryReader : MonoBehaviour
         try
         {
             // Open the shared memory block with the same name
-            mmf = MemoryMappedFile.OpenExisting(SHARED_MEMORY_NAME);
+            mmf = MemoryMappedFile.OpenExisting(SHARED_MEMORY_NAME);  
             accessor = mmf.CreateViewAccessor();
             mutex = Mutex.OpenExisting(MUTEX_NAME);
 
@@ -58,13 +57,13 @@ public class SharedMemoryReader : MonoBehaviour
 
         try
         {
-            if (mutex.WaitOne(100))
+            if (mutex.WaitOne(100))   // if mutex is locked, wait 100 milliseconds
             {
                 try
                 {
                     // Read timestamp
-                    double currentTimestamp = accessor.ReadDouble(0);
-                    if (currentTimestamp <= lastTimestamp)
+                    double currentTimestamp = accessor.ReadDouble(0);   
+                    if (currentTimestamp <= lastTimestamp)   // Timestap prevents reading the same data every single frame
                     {
                         // No new data
                         return;
@@ -90,8 +89,6 @@ public class SharedMemoryReader : MonoBehaviour
                     }
 
                     OnDataReceived?.Invoke(transitData);
-
-
                     Debug.Log($"Received data array (size: {listSize}):");
                     /*
                     for (int i = 0; i < listSize; i++)
@@ -112,11 +109,11 @@ public class SharedMemoryReader : MonoBehaviour
         }
         finally
         {
-            mutex.ReleaseMutex();
+            mutex.ReleaseMutex();   // done reading, allow memory to be written to by Python app
         }
     }
 
-    private void OnDestroy()
+    private void OnDestroy()        // clean up memory
     {
         try
         {

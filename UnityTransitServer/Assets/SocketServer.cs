@@ -85,7 +85,7 @@ public class ServerScript : MonoBehaviour
 
 }
 
-public static class JsonHelper
+public static class JsonHelper    // allows JSON to deserialize an array of structs
 {
     public static T[] FromJson<T>(string json)
     {
