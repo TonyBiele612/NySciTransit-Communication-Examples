@@ -14,6 +14,7 @@ There are two different methods being explored here:
    
    Unity Scripts: SharedMemoryReader, TransitSimpleVisualizer   
    * This is the preferred method
-   
+
+The Unity project is UnityTransitServer. Scripts are in Assets.   
 In both circumstances, the entire array is sent when the array is updated in Python. It does not necessarily conform 
 to the order of objects in the previously sent array.
