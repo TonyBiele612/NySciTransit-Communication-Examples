@@ -8,8 +8,8 @@ using UnityEngine;
 
 public class SharedMemoryReader : MonoBehaviour
 {
-    const string SHARED_MEMORY_NAME = "TransitSharedMemory"; // Shared memory block name
-    const string MUTEX_NAME = "Global\\TransitMemoryMutex";
+    const string SHARED_MEMORY_NAME = "TransitSharedMemory"; // Shared memory block name. Make sure it matches the name from the sending script
+    const string MUTEX_NAME = "Global\\TransitMemoryMutex";  // Mutex name. Global so all Windows apps can read it. Make sure it matches name from the sending script
     const int STRUCT_SIZE = 12; // 2 floats (4 bytes each) + 1 int (4 bytes)
     const int HEADER_SIZE = 12; // 8 bytes for timestamp + 4 bytes for list size
     const int MAX_STRUCTS = 50; // No more than 50 stations
