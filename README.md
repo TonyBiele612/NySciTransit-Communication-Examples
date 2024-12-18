@@ -3,11 +3,15 @@ The information consists of an array of structs in the form of (float position x
 with a max size of 50.
 There are two different methods being explored here:
 1) Socket communication-
-   Python scripts: TransitArrayMaker, TransitSocketClient.   
+   
+   Python scripts: TransitArrayMaker, TransitSocketClient.
+     
    Unity Script: SocketServer
    
-3) Shared Memory-
+2) Shared Memory-
+ 
    Python scripts: TransitArrayMakerSharedMemory, SharedMemoryWriter.
+   
    Unity Scripts: SharedMemoryReader, TransitSimpleVisualizer   
    * This is the preferred method
    
