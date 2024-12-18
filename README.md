@@ -6,7 +6,7 @@ There are two different methods being explored here:
                           Unity Script: SocketServer
    
 2) Shared Memory--        Python scripts: TransitArrayMakerSharedMemory, SharedMemoryWriter.
-                          Unity Scripts: SharedMemoryReader, TransitSimpleVisualizer
+                          Unity Scripts: SharedMemoryReader, TransitSimpleVisualizer   
                           * This is the preferred method
    
 In both circumstances, the entire array is sent when the array is updated in Python. It does not necessarily conform 
