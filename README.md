@@ -2,10 +2,12 @@ This is to demonstrate the transfer information from Python OpenCV code to Unity
 The information consists of an array of structs in the form of (float position x, float position y, int type),
 with a max size of 50.
 There are two different methods being explored here:
-1) Socket communication-- Python scripts: TransitArrayMaker, TransitSocketClient.
+1) Socket communication-
+   Python scripts: TransitArrayMaker, TransitSocketClient.   
    Unity Script: SocketServer
    
-3) Shared Memory--        Python scripts: TransitArrayMakerSharedMemory, SharedMemoryWriter.
+3) Shared Memory-
+   Python scripts: TransitArrayMakerSharedMemory, SharedMemoryWriter.
    Unity Scripts: SharedMemoryReader, TransitSimpleVisualizer   
    * This is the preferred method
    
