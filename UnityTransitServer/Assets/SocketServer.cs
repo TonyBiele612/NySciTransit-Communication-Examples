@@ -1,73 +1,97 @@
+
+
 using System;
-using System.Text;
+using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 using System.Threading;
 using UnityEngine;
-using static ServerScript;
 
-public class ServerScript : MonoBehaviour
+public class SocketServer : MonoBehaviour
 {
-    TcpListener server = null;
-    TcpClient client = null;
-    NetworkStream stream = null;
-    Thread thread;
 
-    [System.Serializable]
-    public struct DataPoint
+    private Thread serverThread;
+    private TcpListener server;
+    private CancellationTokenSource cancellationTokenSource;
+    private TcpClient client;
+    private NetworkStream stream;
+    private DataStruct[] dataArray;
+
+    public event Action<DataStruct[]> OnDataReceived;
+
+    private static readonly ConcurrentQueue<Action> MainThreadActions = new ConcurrentQueue<Action>();
+
+
+    [Serializable]
+    public struct DataStruct
     {
         public float x;
         public float y;
-        public int type; // Match the key "type" from the JSON
+        public string type;
     }
-
-
-    public DataPoint[] dataArray = null;
-
+    
     private void Start()
     {
-        thread = new Thread(new ThreadStart(SetupServer));
-        thread.Start();
+        cancellationTokenSource = new CancellationTokenSource();
+        serverThread = new Thread(() => SetupServer(cancellationTokenSource.Token));
+        serverThread.IsBackground = true; // Ensure the thread exits when the application stops
+        serverThread.Start();
     }
 
-    private void SetupServer()
+    private void Update()
+    {
+        // Execute all queued actions on the main thread
+        while (MainThreadActions.TryDequeue(out var action))
+        {
+            action.Invoke();
+        }
+    }
+
+    private void SetupServer(CancellationToken cancellationToken)
     {
         try
         {
             IPAddress localAddr = IPAddress.Parse("127.0.0.1");
             server = new TcpListener(localAddr, 5000);
             server.Start();
+            Debug.Log("Server started. Waiting for connection...");
 
             byte[] buffer = new byte[2048];
-            string message = null;
+            //string message;
 
-            while (true)
+            while (!cancellationToken.IsCancellationRequested)
             {
-                Debug.Log("Waiting for connection...");
-                client = server.AcceptTcpClient();
-                Debug.Log("Connected!");
+                //ScheduleOnMainThread(() => Debug.Log("Waiting for connection..."));
 
-                message = null;
+                client = server.AcceptTcpClient();
+                ScheduleOnMainThread(() => Debug.Log("Connected!"));
+                int bytesRead;
                 stream = client.GetStream();
 
-                int i;
-
-                while ((i = stream.Read(buffer, 0, buffer.Length)) != 0)
+                while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) != 0)
                 {
-                    message = Encoding.UTF8.GetString(buffer, 0, i);
-                    Debug.Log("Received: " + message);
-                    dataArray = JsonHelper.FromJson<DataPoint>(message);
-                    foreach (var dataPoint in dataArray)
-                    {
-                        Debug.Log($"x: {dataPoint.x}, y: {dataPoint.y}, type: {dataPoint.type}");
-                    }
+                    string message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
 
+                    ScheduleOnMainThread(() => Debug.Log("Received: " + message));
+
+                    dataArray = JsonHelper.FromJson<DataStruct>(message);
+                    ScheduleOnMainThread(() =>
+                    {
+                        foreach (var dataPoint in dataArray)
+                        {
+                            Debug.Log($"x: {dataPoint.x}, y: {dataPoint.y}, type: {dataPoint.type}");
+                        }
+
+                        // Trigger the event on the main thread
+                        OnDataReceived?.Invoke(dataArray);
+                    });
                 }
             }
         }
         catch (SocketException e)
         {
-            Debug.Log("SocketException: " + e);
+            ScheduleOnMainThread(() => Debug.Log("SocketException: " + e));
         }
         finally
         {
@@ -75,28 +99,39 @@ public class ServerScript : MonoBehaviour
         }
     }
 
-    private void OnApplicationQuit()
+    private void ScheduleOnMainThread(Action action)
     {
-        stream.Close();
-        client.Close();
-        server.Stop();
-        thread.Abort();
+        MainThreadActions.Enqueue(action);
     }
 
+    private void OnDestroy()
+    {
+        // Wait for the thread to finish
+        if (serverThread != null && serverThread.IsAlive)
+        {
+            serverThread.Join(); // Blocks until the thread terminates
+        }
+
+        cancellationTokenSource.Dispose(); // Clean up the token source
+        
+    }
 }
 
-public static class JsonHelper    // allows JSON to deserialize an array of structs
+public static class JsonHelper
 {
     public static T[] FromJson<T>(string json)
     {
-        string wrappedJson = "{\"Items\":" + json + "}";
-        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(wrappedJson);
-        return wrapper.Items;
+        string newJson = "{\"array\":" + json + "}";
+        Wrapper<T> wrapper = JsonUtility.FromJson<Wrapper<T>>(newJson);
+        return wrapper.array;
     }
 
-    [System.Serializable]
+    [Serializable]
     private class Wrapper<T>
     {
-        public T[] Items;
+        public T[] array;
     }
+
 }
+
+

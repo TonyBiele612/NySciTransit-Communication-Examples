@@ -447,6 +447,7 @@
 "Assets/SharedMemoryReader.cs"
 "Assets/SocketServer.cs"
 "Assets/TransitSimpleVisualizer.cs"
+"Assets/TransitSimpleVisualizerSocket.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0
 /deterministic

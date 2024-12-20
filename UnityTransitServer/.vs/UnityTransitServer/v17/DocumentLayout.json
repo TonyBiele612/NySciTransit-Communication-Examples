@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\tbiele_smm\\Documents\\GitHub\\NySciTransit\\UnityTransitServer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{41E43EC4-0F3A-2296-A6A1-B420067C008E}|Assembly-CSharp.csproj|C:\\Users\\tbiele_smm\\Documents\\GitHub\\NySciTransit\\UnityTransitServer\\assets\\sharedmemoryreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41E43EC4-0F3A-2296-A6A1-B420067C008E}|Assembly-CSharp.csproj|solutionrelative:assets\\sharedmemoryreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{41E43EC4-0F3A-2296-A6A1-B420067C008E}|Assembly-CSharp.csproj|C:\\Users\\tbiele_smm\\Documents\\GitHub\\NySciTransit\\UnityTransitServer\\assets\\transitsimplevisualizersocket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41E43EC4-0F3A-2296-A6A1-B420067C008E}|Assembly-CSharp.csproj|solutionrelative:assets\\transitsimplevisualizersocket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{41E43EC4-0F3A-2296-A6A1-B420067C008E}|Assembly-CSharp.csproj|c:\\users\\tbiele_smm\\documents\\github\\nyscitransit\\unitytransitserver\\assets\\socketserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{41E43EC4-0F3A-2296-A6A1-B420067C008E}|Assembly-CSharp.csproj|solutionrelative:assets\\socketserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{41E43EC4-0F3A-2296-A6A1-B420067C008E}|Assembly-CSharp.csproj|C:\\Users\\tbiele_smm\\Documents\\GitHub\\NySciTransit\\UnityTransitServer\\assets\\sharedmemoryreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{41E43EC4-0F3A-2296-A6A1-B420067C008E}|Assembly-CSharp.csproj|solutionrelative:assets\\sharedmemoryreader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{41E43EC4-0F3A-2296-A6A1-B420067C008E}|Assembly-CSharp.csproj|C:\\Users\\tbiele_smm\\Documents\\GitHub\\NySciTransit\\UnityTransitServer\\assets\\transitsimplevisualizer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,19 +22,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SocketServer.cs",
-              "DocumentMoniker": "C:\\Users\\tbiele_smm\\Documents\\GitHub\\NySciTransit\\UnityTransitServer\\Assets\\SocketServer.cs",
-              "RelativeDocumentMoniker": "Assets\\SocketServer.cs",
-              "ToolTip": "C:\\Users\\tbiele_smm\\Documents\\GitHub\\NySciTransit\\UnityTransitServer\\Assets\\SocketServer.cs",
-              "RelativeToolTip": "Assets\\SocketServer.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAgwFEAAAAWAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "TransitSimpleVisualizerSocket.cs",
+              "DocumentMoniker": "C:\\Users\\tbiele_smm\\Documents\\GitHub\\NySciTransit\\UnityTransitServer\\Assets\\TransitSimpleVisualizerSocket.cs",
+              "RelativeDocumentMoniker": "Assets\\TransitSimpleVisualizerSocket.cs",
+              "ToolTip": "C:\\Users\\tbiele_smm\\Documents\\GitHub\\NySciTransit\\UnityTransitServer\\Assets\\TransitSimpleVisualizerSocket.cs",
+              "RelativeToolTip": "Assets\\TransitSimpleVisualizerSocket.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBQAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-18T16:36:07.416Z",
+              "WhenOpened": "2024-12-19T19:19:01.654Z",
               "EditorCaption": ""
             },
             {
@@ -45,22 +45,21 @@
               "RelativeDocumentMoniker": "Assets\\TransitSimpleVisualizer.cs",
               "ToolTip": "C:\\Users\\tbiele_smm\\Documents\\GitHub\\NySciTransit\\UnityTransitServer\\Assets\\TransitSimpleVisualizer.cs",
               "RelativeToolTip": "Assets\\TransitSimpleVisualizer.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwCAAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-17T21:00:55.446Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "SharedMemoryReader.cs",
               "DocumentMoniker": "C:\\Users\\tbiele_smm\\Documents\\GitHub\\NySciTransit\\UnityTransitServer\\Assets\\SharedMemoryReader.cs",
               "RelativeDocumentMoniker": "Assets\\SharedMemoryReader.cs",
               "ToolTip": "C:\\Users\\tbiele_smm\\Documents\\GitHub\\NySciTransit\\UnityTransitServer\\Assets\\SharedMemoryReader.cs",
               "RelativeToolTip": "Assets\\SharedMemoryReader.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABUAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAkwGUAAABKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T17:21:25.811Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-17T17:21:25.811Z"
             }
           ]
         }

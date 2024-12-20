@@ -32,10 +32,15 @@ public class SharedMemoryReader : MonoBehaviour
 
     void Start()
     {
+        StartSharedMemory();
+    }
+
+    void StartSharedMemory()
+    {
         try
         {
             // Open the shared memory block with the same name
-            mmf = MemoryMappedFile.OpenExisting(SHARED_MEMORY_NAME);  
+            mmf = MemoryMappedFile.OpenExisting(SHARED_MEMORY_NAME);
             accessor = mmf.CreateViewAccessor();
             mutex = Mutex.OpenExisting(MUTEX_NAME);
 
@@ -51,9 +56,14 @@ public class SharedMemoryReader : MonoBehaviour
         }
     }
 
+
     void Update()
     {
-        if (accessor == null || mutex == null) return;
+        if (accessor == null || mutex == null)
+        {
+            StartSharedMemory();
+            return;
+        }
 
         try
         {

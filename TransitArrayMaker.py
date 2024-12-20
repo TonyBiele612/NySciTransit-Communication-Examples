@@ -1,7 +1,6 @@
 import pygame as pg
 import random
 import TransitSocketClient as tsc
-#import TransitSocketServer as tss
 
 SCREEN_WIDTH = 500
 SCREEN_HEIGHT = 500

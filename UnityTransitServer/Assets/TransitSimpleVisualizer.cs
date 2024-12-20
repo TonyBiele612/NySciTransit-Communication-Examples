@@ -6,6 +6,7 @@ using TMPro;
 
 public class TransitSimpleVisualizer : MonoBehaviour
 {
+    // THIS VERSION USES THE SHARED MEMORY READER
     public GameObject stationPrefab;
     public GameObject sharedMemoryReaderGameObject;
         
