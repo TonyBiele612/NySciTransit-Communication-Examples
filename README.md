@@ -30,7 +30,9 @@ There are two different methods being explored here:
   
    Unity Side: 
   
-   DISABLE GameObjects SocketServer, Visualizer SS     
+   DISABLE GameObjects SocketServer, Visualizer SS
+
+   ENABLE GameObjects SharedMemoryReader, Visualizer SMR
                      
 To operate: Left click in the Python window to create a station at the click location.
 New station will appear and be given a random Type number
