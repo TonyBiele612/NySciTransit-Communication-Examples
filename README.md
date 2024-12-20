@@ -24,16 +24,14 @@ There are two different methods being explored here:
    
    Unity Scripts: SharedMemoryReader, TransitSimpleVisualizer
    
-  To Run: 
+   To Run: 
   
-  Python side: Run TransitArrayMakerSharedMemory
+   Python side: Run TransitArrayMakerSharedMemory
   
-  Unity Side: 
+   Unity Side: 
   
-  DISABLE GameObjects SocketServer, Visualizer SS     
-  
-  ENABLE GameObjects SharedMemoryReader, Visualizer SMR
-                       
+   DISABLE GameObjects SocketServer, Visualizer SS     
+                     
 To operate: Left click in the Python window to create a station at the click location.
 New station will appear and be given a random Type number
 The station will appear in the same location and Type in the Unity window
