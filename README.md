@@ -10,8 +10,11 @@ There are two different methods being explored here:
 
    To Run: Python side:
    Run TransitArrayMaker
+   
    Unity Side:
+   
    DISABLE GameObjects SharedMemoryReader, Visualizer SMR
+   
    ENABLE GameObjects SocketServer, Visualizer SS
    
 3) Shared Memory-
@@ -22,9 +25,13 @@ There are two different methods being explored here:
    Unity Scripts: SharedMemoryReader, TransitSimpleVisualizer
    
   To Run: 
+  
   Python side: Run TransitArrayMakerSharedMemory
+  
   Unity Side: 
-  DISABLE GameObjects SocketServer, Visualizer SS                    
+  
+  DISABLE GameObjects SocketServer, Visualizer SS     
+  
   ENABLE GameObjects SharedMemoryReader, Visualizer SMR
                        
 To operate: Left click in the Python window to create a station at the click location.
